@@ -1,4 +1,5 @@
 const req = require("express/lib/request")
+const res = require("express/lib/response")
 
 const router = require("express").Router()
 
@@ -21,15 +22,19 @@ router.get("/", (req, res) => {
   res.render('places/index', { places })
 })
 
+router.get('/new', (req, res) => {
+  res.render("places/new")
+})
+
+// router.get('/:id', (req, res) => {
+
+// })
+
 router.get('/:id/edit', (req, res) => {
   res.render("places/editPage")
 })
 
-router.get('/:id/newPage', (req, res) => {
-  res.render("places/newPage")
-})
-
-router.get('/id/showPage', (req, res) => {
+router.get('/:id/showPage', (req, res) => {
   res.render("place/showPage")
 })
 module.exports = router
