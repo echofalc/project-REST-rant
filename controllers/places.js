@@ -37,4 +37,9 @@ router.get('/:id/edit', (req, res) => {
 router.get('/:id/showPage', (req, res) => {
   res.render("place/showPage")
 })
+
+router.post('/', (req, res) => {
+  console.log(req.body)
+  res.send('POST /places')
+})
 module.exports = router
