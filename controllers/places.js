@@ -34,7 +34,7 @@ router.get('/:id/show', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  console.log(req.body)
+  // console.log(req.body)
   if (!req.body.pic) {
     // Default image if one is not provided
     req.body.pic = 'http://placekitten.com/400/400'
@@ -47,5 +47,19 @@ router.post('/', (req, res) => {
   }
   places.push(req.body)
   res.redirect('/places')
+})
+
+router.delete('/places/:id', (req, res) => {
+  let id = Number(req.params.id)
+  if (isNaN(id)) {
+    res.render('error404')
+  }
+  else if (!places[id]) {
+    res.render('error404')
+  }
+  else {
+    places.splice(id, 1)
+    res.redirect('/places')
+  }
 })
 module.exports = router
